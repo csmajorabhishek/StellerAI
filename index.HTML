@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steller AI - Launching Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Logo */
+.logo{
+    position:absolute;
+    top:30px;
+    left:40px;
+    font-weight:300;
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+/* Layout */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:100vh;
+    padding:0 8%;
+}
+
+/* LEFT SIDE */
+.left{
+    flex:1;
+    position:relative;
+}
+
+/* Glitch Text */
+.glitch{
+    position:relative;
+    font-weight:800;
+    line-height:0.9;
+    font-size:clamp(60px, 10vw, 140px);
+    color:#fff;
+    z-index:5; /* ensure visible */
+}
+
+/* RGB Layers */
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.glitch::before{
+    color:#ff00ff;
+    z-index:-1;
+    animation:glitchLeft 2s infinite linear alternate-reverse;
+}
+
+.glitch::after{
+    color:#00ffff;
+    z-index:-2;
+    animation:glitchRight 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitchLeft{
+    0%{ transform:translate(0);}
+    25%{ transform:translate(-4px,-2px);}
+    50%{ transform:translate(-6px,2px);}
+    75%{ transform:translate(3px,-1px);}
+    100%{ transform:translate(0);}
+}
+
+@keyframes glitchRight{
+    0%{ transform:translate(0);}
+    25%{ transform:translate(4px,2px);}
+    50%{ transform:translate(6px,-2px);}
+    75%{ transform:translate(-3px,1px);}
+    100%{ transform:translate(0);}
+}
+
+/* 3D Cube */
+.scene{
+    width:160px;
+    height:160px;
+    position:absolute;
+    top:20%;
+    left:35%;
+    perspective:800px;
+    z-index:1; /* below text */
+}
+
+.cube{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:rotateCube 8s infinite linear;
+}
+
+.cube div{
+    position:absolute;
+    width:160px;
+    height:160px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.front  { transform:rotateY(0deg) translateZ(80px); }
+.back   { transform:rotateY(180deg) translateZ(80px); }
+.rightf { transform:rotateY(90deg) translateZ(80px); }
+.leftf  { transform:rotateY(-90deg) translateZ(80px); }
+.top    { transform:rotateX(90deg) translateZ(80px); }
+.bottom { transform:rotateX(-90deg) translateZ(80px); }
+
+@keyframes rotateCube{
+    0%{ transform:rotateX(0deg) rotateY(0deg); }
+    100%{ transform:rotateX(360deg) rotateY(360deg); }
+}
+
+/* RIGHT SIDE */
+.right{
+    flex:1;
+    max-width:500px;
+    font-size:clamp(14px, 1.5vw, 18px);
+    line-height:1.8;
+    color:#ddd;
+}
+
+.contact{
+    margin-top:40px;
+    font-size:13px;
+    letter-spacing:1px;
+    color:#aaa;
+}
+
+/* Responsive */
+@media(max-width:1024px){
+    .container{
+        flex-direction:column;
+        text-align:center;
+        padding:120px 20px 60px 20px;
+    }
+
+    .left{
+        margin-bottom:60px;
+    }
+
+    .scene{
+        position:relative;
+        margin:40px auto;
+        left:0;
+        top:0;
+    }
+}
+
+@media(max-width:600px){
+    .logo{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+    STELLER<br>AI
+</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <div class="glitch" data-text="Launching Soon">
+            Launching<br>Soon
+        </div>
+
+        <!-- 3D Cube -->
+        <div class="scene">
+            <div class="cube">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="rightf"></div>
+                <div class="leftf"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right">
+        <p>
+            Something new is taking shape. Steller AI by Abhishek and Krishna 
+            is almost here, built to spark ideas and push limits. 
+            Keep an eye out - its arrival is closer than you think.
+        </p>
+
+        <div class="contact">
+            WANT TO JOIN, SUGGESTION, SUPPORT?<br>
+            CONTACT: CSMAJORABHISHEK@GMAIL.COM
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
